@@ -3,14 +3,14 @@ package Units;
 public class Crossbowman extends BaseHero {
 
     public Crossbowman(String name) {
-        super(name, 100, 30, 3);
+        super(name, "Арбалетчик", 100, 30, 3);
     }
 
     public String getInfo() {
-        return "Арбалетчик";
+        return heroType;
     }
 
-    public void move() {
-        System.out.println("Арбалетчик ходит...");
+    public void step() {
+        System.out.println(heroType + " ходит...");
     }
 }

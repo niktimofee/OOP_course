@@ -3,14 +3,14 @@ package Units;
 public class Bandit extends BaseHero {
 
     public Bandit(String name) {
-        super(name, 100, 15, 5);
+        super(name, "Разбойник", 100, 15, 5);
     }
 
     public String getInfo() {
-        return "Разбойник";
+        return heroType;
     }
 
-    public void move() {
-        System.out.println("Разбойник ходит...");
+    public void step() {
+        System.out.println(heroType + " ходит...");
     }
 }

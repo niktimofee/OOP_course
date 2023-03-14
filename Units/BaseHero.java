@@ -2,12 +2,14 @@ package Units;
 
 public abstract class BaseHero {
     protected String name;
+    protected String heroType;
     protected int hp;
     protected int damage;
     protected int speed;
 
-    public BaseHero(String name, int hp, int damage, int speed) {
+    public BaseHero(String name, String heroType, int hp, int damage, int speed) {
         this.name = name;
+        this.heroType = heroType;
         this.hp = hp;
         this.damage = damage;
         this.speed = speed;
@@ -15,7 +17,7 @@ public abstract class BaseHero {
 
     public String getInfo() {
         return String.format("Name: %s , %s , Hp: %d , Damage: %d , Speed: %d",
-                this.name, this.getClass().getSimpleName(), this.hp, this.damage, this.speed);
+                this.name, this.heroType, this.hp, this.damage, this.speed);
     }
 
     public void takingHeal(int heal) {
@@ -36,7 +38,7 @@ public abstract class BaseHero {
         target.takingDamage(damage);
     }
 
-    public abstract void move();
+    public abstract void step();
 
     // public abstract void specialAbility();
 }

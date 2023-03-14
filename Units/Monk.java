@@ -3,14 +3,14 @@ package Units;
 public class Monk extends BaseHero {
 
     public Monk(String name) {
-        super(name, 100, 5, 2);
+        super(name, "Монах", 100, 5, 2);
     }
 
     public String getInfo() {
-        return "Монах";
+        return heroType;
     }
 
-    public void move() {
-        System.out.println("Монах ходит...");
+    public void step() {
+        System.out.println(heroType + " ходит...");
     }
 }

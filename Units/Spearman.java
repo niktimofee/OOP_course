@@ -3,14 +3,14 @@ package Units;
 public class Spearman extends BaseHero {
 
     public Spearman(String name) {
-        super(name, 100, 20, 3);
+        super(name, "Копейщик", 100, 20, 3);
     }
 
     public String getInfo() {
-        return "Копейщик";
+        return heroType;
     }
 
-    public void move() {
-        System.out.println("Копейщик ходит...");
+    public void step() {
+        System.out.println(heroType + " ходит...");
     }
 }

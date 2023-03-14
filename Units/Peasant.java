@@ -3,14 +3,14 @@ package Units;
 public class Peasant extends BaseHero {
 
     public Peasant(String name) {
-        super(name, 100, 5, 1);
+        super(name, "Крестьянин", 100, 5, 1);
     }
 
     public String getInfo() {
-        return "Крестьянин";
+        return heroType;
     }
 
-    public void move() {
-        System.out.println("Крестьянин ходит...");
+    public void step() {
+        System.out.println(heroType + " ходит...");
     }
 }

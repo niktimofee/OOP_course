@@ -3,14 +3,14 @@ package Units;
 public class Sniper extends BaseHero {
 
     public Sniper(String name) {
-        super(name, 100, 50, 1);
+        super(name, "Снайпер", 100, 50, 1);
     }
 
     public String getInfo() {
-        return "Снайпер";
-    }   
+        return heroType;
+    }
 
-    public void move() {
-        System.out.println("Снайпер ходит...");
+    public void step() {
+        System.out.println(heroType + " ходит...");
     }
 }

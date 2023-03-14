@@ -3,14 +3,14 @@ package Units;
 public class Wizard extends BaseHero {
 
     public Wizard(String name) {
-        super(name, 100, 25, 2);
+        super(name, "Колдун", 100, 25, 2);
     }
 
     public String getInfo() {
-        return "Колдун";
+        return heroType;
     }
 
-    public void move() {
-        System.out.println("Колдун ходит...");
+    public void step() {
+        System.out.println(heroType + " ходит...");
     }
 }
