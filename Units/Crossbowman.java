@@ -43,4 +43,35 @@ public class Crossbowman extends BaseHero {
     // public void step() {
     //     System.out.println(heroType + " ходит...");
     // }
+
+    public void step() {
+        if (getHealth() == 0 || shots == 0) {
+            return;
+        }
+        BaseHero closestEnemy = null;
+        double closestDistance = Double.MAX_VALUE;
+        for (BaseHero enemy : getEnemies()) {
+            double distance = Math.sqrt(Math.pow(enemy.getX() - getX(), 2) + Math.pow(enemy.getY() - getY(), 2));
+            if (distance < closestDistance) {
+                closestEnemy = enemy;
+                closestDistance = distance;
+            }
+        }
+        if (closestEnemy != null) {
+            int damage = (int) Math.round((getMinDamage() + getMaxDamage()) / 2.0);
+            closestEnemy.GetDamage(damage);
+        }
+        Peasant closestPeasant = null;
+        closestDistance = Double.MAX_VALUE;
+        for (Peasant peasant : getPeasant()) {
+            double distance = Math.sqrt(Math.pow(peasant.getX() - getX(), 2) + Math.pow(peasant.getY() - getY(), 2));
+            if (distance < closestDistance) {
+                closestPeasant = peasant;
+                closestDistance = distance;
+            }
+        }
+        if (closestPeasant == null) {
+            shots--;
+        }
+    }
 }

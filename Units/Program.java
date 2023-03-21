@@ -45,14 +45,6 @@ public class Program {
             }
         }
 
-        // for (BaseHero hero : heroesList1) {
-        //     System.out.println(hero.getInfo());
-        // }
-
-        // for (BaseHero hero : heroesList2) {
-        //     System.out.println(hero.getInfo());
-        // }
-
         List<BaseHero> allHeroes = new ArrayList<>();
         allHeroes.addAll(heroesList1);
         allHeroes.addAll(heroesList2);
@@ -62,6 +54,8 @@ public class Program {
         for (BaseHero hero : allHeroes) {
             System.out.println(hero.getInfo());
         }
+
+        Peasant peasant = new Peasant("Джек", 10, 20);
 
         // Peasant peasant = new Peasant("Кир");
         // Bandit bandit = new Bandit("Конан");

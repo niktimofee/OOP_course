@@ -35,9 +35,19 @@ public class Peasant extends BaseHero {
         this.magic = magic;
     }
 
-    // public Peasant(String name) {
-    //     super(name, "Крестьянин", 100, 5, 1);
-    // }
+    public Peasant(String name, String heroType, int x, int y) {
+        super(name, "Крестьянин", x, y);
+    }
+
+    public void attack(BaseHero hero) {
+        System.out.println(getHeroType() + getName() + " attacks " + hero.getHeroType() + hero.getName());
+    }
+
+    public void move(int deltaX, int deltaY) {
+        System.out.println(getHeroType() + getName() + " moves to (" + (coord.getX() + deltaX) + ", " + (coord.getY() + deltaY) + ")");
+        coord.setX(coord.getX() + deltaX);
+        coord.setY(coord.getY() + deltaY);
+    }
 
     public int getAttack() {
         return attack;
@@ -73,9 +83,5 @@ public class Peasant extends BaseHero {
 
     // public String getInfo() {
     //     return heroType;
-    // }
-
-    // public void step() {
-    //     System.out.println(heroType + " ходит...");
     // }
 }

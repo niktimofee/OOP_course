@@ -11,14 +11,10 @@ public abstract class BaseHero {
     private int speed;
     private int delivery;
     private int magic;
+    private String name;
+    private String heroType;
 
-    // protected String name;
-    // protected String heroType;
-    // protected int hp;
-    // protected int damage;
-    // protected int speed;
-
-    public Bandit(String name, String heroType) {
+    public BaseHero(String name, String heroType) {
         super(name);
         super(heroType);
         this.attack = 8;
@@ -32,7 +28,7 @@ public abstract class BaseHero {
         this.magic = 0;
     }
 
-    public Bandit(String name, String heroType, int attack, int defense, int shots, int minDamage, int maxDamage, int health, int speed, int delivery, int magic) {
+    public BaseHero(String name, String heroType, int attack, int defense, int shots, int minDamage, int maxDamage, int health, int speed, int delivery, int magic) {
         super(name);
         super(heroType);
         this.attack = attack;
@@ -45,14 +41,6 @@ public abstract class BaseHero {
         this.delivery = delivery;
         this.magic = magic;
     }
-
-    // public BaseHero(String name, String heroType, int hp, int damage, int speed) {
-    //     this.name = name;
-    //     this.heroType = heroType;
-    //     this.hp = hp;
-    //     this.damage = damage;
-    //     this.speed = speed;
-    // }
 
     private String getName(String name) {
         return name;
@@ -136,5 +124,38 @@ public abstract class BaseHero {
         return String.format("Name: %s, Health: %d, Attack: %d, Defense: %d, Damage: %d-%d",
                 this.getName(), this.getHeroType(), this.getHealth(), this.getAttack(), this.getDefense(),
                 this.getDamageMin(), this.getDamageMax());
+    }
+
+    public BaseHero(String name, int x, int y) {
+        this.name = name;
+        this.coord = new Coord(x, y);
+    }
+
+    protected Coord coord;
+
+    protected static class Coord {
+        private int x;
+        private int y;
+
+        public Coord(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+
+        public int getX() {
+            return x;
+        }
+
+        public void setX(int x) {
+            this.x = x;
+        }
+
+        public int getY() {
+            return y;
+        }
+
+        public void setY(int y) {
+            this.y = y;
+        }
     }
 }
