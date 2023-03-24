@@ -6,56 +6,84 @@ import java.util.List;
 import java.util.Random;
 
 public class Program {
+
+    public static final int GANG_SIZE = 10;
+    public static List<BaseHero> whiteSide = new ArrayList<>();
+    public static List<BaseHero> darkSide = new ArrayList<>();
+
+    public static void scan(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        main();
+
+        while(true){
+            ConsoleView.view();
+            sc.nextLine();
+            step();
+        }
+    }
+
     public static void main(String[] args) {
 
-        List<BaseHero> heroesList1 = new ArrayList<>();
-        List<BaseHero> heroesList2 = new ArrayList<>();
-        Random random = new Random();
+        // List<BaseHero> heroesList1 = new ArrayList<>();
+        // List<BaseHero> heroesList2 = new ArrayList<>();
+        // Random random = new Random();
 
-        for (int i = 0; i < 10; i++) {
-            int heroType1 = random.nextInt(4);
-            int heroType2 = random.nextInt(4) + 4;
-            switch (heroType1) {
+        for (int i = 0; i < GANG_SIZE + 1; i++) {
+            // int heroType1 = random.nextInt(4);
+            // int heroType2 = random.nextInt(4) + 4;
+            switch (new Random().nextInt(4)) {
                 case 0:
-                    heroesList1.add(new Peasant("Крестьянин #" + i));
+                    whiteSide.add(new Peasant("Крестьянин #" + i));
                     break;
                 case 1:
-                    heroesList1.add(new Bandit("Разбойник #" + i));
+                    whiteSide.add(new Bandit("Разбойник #" + i));
                     break;
                 case 2:
-                    heroesList1.add(new Sniper("Снайпер #" + i));
+                    whiteSide.add(new Sniper("Снайпер #" + i));
                     break;
                 case 3:
-                    heroesList1.add(new Wizard("Колдун #" + i));
+                    whiteSide.add(new Wizard("Колдун #" + i));
                     break;
             }
-            switch (heroType2) {
+            switch (new Random().nextInt(4)) {
                 case 4:
-                    heroesList2.add(new Peasant("Крестьянин #" + i));
+                    darkSide.add(new Peasant("Крестьянин #" + i));
                     break;
                 case 5:
-                    heroesList2.add(new Spearman("Копейщик #" + i));
+                    darkSide.add(new Spearman("Копейщик #" + i));
                     break;
                 case 6:
-                    heroesList2.add(new Crossbowman("Арбалетчик #" + i));
+                    darkSide.add(new Crossbowman("Арбалетчик #" + i));
                     break;
                 case 7:
-                    heroesList2.add(new Monk("Монах #" + i));
+                    darkSide.add(new Monk("Монах #" + i));
                     break;
             }
         }
+    }
 
-        List<BaseHero> allHeroes = new ArrayList<>();
-        allHeroes.addAll(heroesList1);
-        allHeroes.addAll(heroesList2);
+        public static void step() {
+            List<BaseHero> allHeroes = new ArrayList<>();
 
-        Collections.sort(allHeroes, (h1, h2) -> h2.getSpeed() - h1.getSpeed());
+            allHeroes.addAll(whiteSide);
+            allHeroes.addAll(darkSide);
 
-        for (BaseHero hero : allHeroes) {
+            Collections.sort(allHeroes, (h1, h2) -> h2.getSpeed() - h1.getSpeed());
+
+            for (BaseHero hero : allHeroes) {
             System.out.println(hero.getInfo());
+            }
+
+            // for (BaseHero hero : allHeroes) {
+            //     if (darkSide.contains(hero)) {
+            //         hero.step(whiteSide, darkSide);
+            //     } else
+            //         hero.step(darkSide, whiteSide);
+            // }
+
         }
 
-        Peasant peasant = new Peasant("Джек", 10, 20);
+        // Peasant peasant = new Peasant("Джек", 10, 20);
 
         // Peasant peasant = new Peasant("Кир");
         // Bandit bandit = new Bandit("Конан");
@@ -66,4 +94,3 @@ public class Program {
         // Monk monk = new Monk("Титус");
 
     }
-}

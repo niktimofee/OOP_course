@@ -1,5 +1,7 @@
 package Units;
 
+import javax.swing.text.Position;
+
 public abstract class BaseHero {
     
     private int attack;
@@ -13,6 +15,7 @@ public abstract class BaseHero {
     private int magic;
     private String name;
     private String heroType;
+    private Position position;
 
     public BaseHero(String name, String heroType) {
         super(name);
@@ -157,5 +160,9 @@ public abstract class BaseHero {
         public void setY(int y) {
             this.y = y;
         }
+    }
+
+    private Object getCoord() {
+        return coord;
     }
 }
