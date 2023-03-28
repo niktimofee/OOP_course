@@ -2,9 +2,9 @@ package Units;
 
 public class Bandit extends BaseHero {
 
-    private int shots;
-    private int minDamage;
-    private int maxDamage;
+    protected int shots;
+    protected int minDamage;
+    protected int maxDamage;
     
     public Bandit(String name, String heroType) {
         super(name, "Разбойник", 8, 3, 0, 2, 10, 6, 0, 0);

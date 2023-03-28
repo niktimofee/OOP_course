@@ -1,23 +1,27 @@
 package Units;
 
-import javax.swing.text.Position;
+import java.util.ArrayList;
+import java.util.Random;
+
+// import javax.swing.text.Position;
 
 public abstract class BaseHero {
     
-    private int attack;
-    private int defense;
-    private int shots;
-    private int minDamage;
-    private int maxDamage;
-    private int health;
-    private int speed;
-    private int delivery;
-    private int magic;
-    private String name;
-    private String heroType;
-    private Position position;
+    protected int attack;
+    protected int defense;
+    protected int shots;
+    protected int minDamage;
+    protected int maxDamage;
+    protected int health;
+    protected int speed;
+    protected int delivery;
+    protected int magic;
+    protected int stamina;
+    protected String name;
+    protected String heroType;
+    protected Position position;
 
-    public BaseHero(String name, String heroType) {
+    public BaseHero(String name, String heroType, int x, int y) {
         super(name);
         super(heroType);
         this.attack = 8;
@@ -29,9 +33,11 @@ public abstract class BaseHero {
         this.speed = 6;
         this.delivery = 0;
         this.magic = 0;
+        this.stamina = 1;
+        position = new Position(x, y);
     }
 
-    public BaseHero(String name, String heroType, int attack, int defense, int shots, int minDamage, int maxDamage, int health, int speed, int delivery, int magic) {
+    public BaseHero(String name, String heroType, int attack, int defense, int shots, int minDamage, int maxDamage, int health, int speed, int delivery, int magic, int stamina, int x, int y) {
         super(name);
         super(heroType);
         this.attack = attack;
@@ -43,6 +49,8 @@ public abstract class BaseHero {
         this.speed = speed;
         this.delivery = delivery;
         this.magic = magic;
+        this.stamina = stamina;
+        position = new Position(x, y);
     }
 
     private String getName(String name) {
@@ -89,32 +97,48 @@ public abstract class BaseHero {
         return magic;
     }
 
-    // public String getInfo() {
-    //     return String.format("Name: %s , %s , Hp: %d , Damage: %d , Speed: %d",
-    //             this.name, this.heroType, this.hp, this.damage, this.speed);
-    // }
+    public void attack(BaseHero target, int damage, int maxDamage) {
+        int causedDamage;
+        if (damage < target.defense) causedDamage = damage;
+        else {
+            switch (new Random().nextInt(4)){
+                case 0:
+                    causedDamage = maxDamage;
+                    break;
+                default:
+                    causedDamage = damage;
+                    break;
+            }
+        }
+        target.getDamage(causedDamage);
+    }
 
-    // public void takingHeal(int heal) {
-    //     if (this.hp + heal <= 100) {
-    //         this.hp += heal;
-    //     }
-    // }
+    public void getDamage(int damage) {
+        if (this.health - damage > 0) {
+            this.health -= damage;
+        } else
+            this.health = 0;
+    }
 
-    // public void takingDamage(int damage) {
-    //     if (this.hp - damage > 0) {
-    //         this.hp -= damage;
-    //     }
-    //     // else { die(); }
-    // }
-
-    // public void attack(BaseHero target) {
-    //     int damage = this.damage;
-    //     target.takingDamage(damage);
-    // }
-
-    // public abstract void step();
-
-    // public abstract void specialAbility();
+    public void step(ArrayList<BaseHero> team, ArrayList<BaseHero> friends){
+        if (this.stamina > 0 && this.health > 0) {
+            BaseHero target = null;
+            double minDistance = Double.MAX_VALUE;
+            for (BaseHero hero : team) {
+                if(this.position.getDistance(hero)<minDistance && hero.health>0){
+                    minDistance = this.position.getDistance(hero);
+                    target = hero;
+                }
+            }
+            if(this.position.getDistance(target)>=2){
+                this.position.direction(target.position, friends);
+            }
+            else if(target.health > 0){
+                this.attack(target, this.minDamage, this.maxDamage);
+                this.stamina--;
+            }
+        }
+    }
 
     public String getInfo() {
         return String.format("Name: %s, Health: %d, Attack: %d, Defense: %d, Damage: %d-%d, Shots: %d, Speed: %d, Delivery: %d, Magic: %d",
@@ -129,40 +153,7 @@ public abstract class BaseHero {
                 this.getDamageMin(), this.getDamageMax());
     }
 
-    public BaseHero(String name, int x, int y) {
-        this.name = name;
-        this.coord = new Coord(x, y);
-    }
-
-    protected Coord coord;
-
-    protected static class Coord {
-        private int x;
-        private int y;
-
-        public Coord(int x, int y) {
-            this.x = x;
-            this.y = y;
-        }
-
-        public int getX() {
-            return x;
-        }
-
-        public void setX(int x) {
-            this.x = x;
-        }
-
-        public int getY() {
-            return y;
-        }
-
-        public void setY(int y) {
-            this.y = y;
-        }
-    }
-
-    private Object getCoord() {
-        return coord;
+    public Position getPosition() {
+        return position;
     }
 }

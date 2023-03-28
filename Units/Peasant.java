@@ -2,14 +2,14 @@ package Units;
 
 public class Peasant extends BaseHero {
 
-    private int attack;
-    private int defense;
-    private int shots;
-    private int damage;
-    private int health;
-    private int speed;
-    private int delivery;
-    private int magic;
+    protected int attack;
+    protected int defense;
+    protected int shots;
+    protected int damage;
+    protected int health;
+    protected int speed;
+    protected int delivery;
+    protected int magic;
 
     public Peasant(String name, String heroType) {
         super(name, "Крестьянин");

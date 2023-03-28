@@ -2,9 +2,9 @@ package Units;
 
 public class Crossbowman extends BaseHero {
 
-    private int shots;
-    private int minDamage;
-    private int maxDamage;
+    protected int shots;
+    protected int minDamage;
+    protected int maxDamage;
 
     public Crossbowman(String name, String heroType, int health, int speed) {
         super(name, "Арбалетчик" 6, 3, health, speed, 0, 0);

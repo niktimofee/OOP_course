@@ -2,9 +2,9 @@ package Units;
 
 public class Sniper extends BaseHero {
 
-    private int shots;
-    private int minDamage;
-    private int maxDamage;
+    protected int shots;
+    protected int minDamage;
+    protected int maxDamage;
 
     public Sniper(String name, String heroType) {
         super(name, "Снайпер", 12, 10, 32, 15, 9, 0, 0);

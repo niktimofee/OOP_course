@@ -2,7 +2,7 @@ package Units;
 
 public class Monk extends BaseHero {
 
-    private int magic;
+    protected int magic;
 
     public Monk(String name, String heroType) {
         super(name, "Монах", 12, 7, 0, -4, -4, 30, 5);

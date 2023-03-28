@@ -2,15 +2,15 @@ package Units;
 
 public class Spearman extends BaseHero {
 
-    private int attack;
-    private int defense;
-    private int shots;
-    private int minDamage;
-    private int maxDamage;
-    private int health;
-    private int speed;
-    private int delivery;
-    private int magic;
+    protected int attack;
+    protected int defense;
+    protected int shots;
+    protected int minDamage;
+    protected int maxDamage;
+    protected int health;
+    protected int speed;
+    protected int delivery;
+    protected int magic;
 
     public Spearman(String name, String heroType) {
         super(name, "Копейщик");
