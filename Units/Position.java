@@ -8,8 +8,8 @@ public class Position {
         this.x = x;
         this.y = y;
     }
-    public double getDistance(BaseHero unit) {
-        return Math.sqrt(Math.pow(x - unit.position.x, 2) + Math.pow(y - unit.position.y, 2));
+    public double getDistance(BaseHero hero) {
+        return Math.sqrt(Math.pow(x - hero.position.x, 2) + Math.pow(y - hero.position.y, 2));
     }
     public boolean isEquals(Position position) {
         if ((position.x == this.x) & (position.y == this.y))

@@ -1,6 +1,6 @@
 package Units;
 
-public class Wizard extends BaseHero {
+public class Wizard extends MagicClass {
 
     public Wizard(String name, String heroType) {
         super(17, 12, 0, "-5", 30, 9, 0, 1, name, "Колдун");

@@ -1,6 +1,6 @@
 package Units;
 
-public class Spearman extends BaseHero {
+public class Spearman extends InfantClass {
 
     protected int attack;
     protected int defense;

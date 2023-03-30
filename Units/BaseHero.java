@@ -53,47 +53,47 @@ public abstract class BaseHero {
         position = new Position(x, y);
     }
 
-    private String getName(String name) {
+    public String getName(String name) {
         return name;
     }
 
-    private String getHeroType(String heroType) {
+    public String getHeroType(String heroType) {
         return heroType;
     }
 
-    private Object getAttack() {
+    public Object getAttack() {
         return attack;
     }
 
-    private Object getDefense() {
+    public Object getDefense() {
         return defense;
     }
 
-    private Object getShots() {
+    public Object getShots() {
         return shots;
     }
 
-    private Object getDamageMin() {
+    public Object getDamageMin() {
         return minDamage;
     }
 
-    private Object getDamageMax() {
+    public Object getDamageMax() {
         return maxDamage;
     }
 
-    private Object getHealth() {
+    public Object getHealth() {
         return health;
     }
 
-    private Object getSpeed() {
+    public Object getSpeed() {
         return speed;
     }
 
-    private Object getDelivery() {
+    public Object getDelivery() {
         return delivery;
     }
 
-    private Object getMagic() {
+    public Object getMagic() {
         return magic;
     }
 
@@ -118,26 +118,6 @@ public abstract class BaseHero {
             this.health -= damage;
         } else
             this.health = 0;
-    }
-
-    public void step(ArrayList<BaseHero> team, ArrayList<BaseHero> friends){
-        if (this.stamina > 0 && this.health > 0) {
-            BaseHero target = null;
-            double minDistance = Double.MAX_VALUE;
-            for (BaseHero hero : team) {
-                if(this.position.getDistance(hero)<minDistance && hero.health>0){
-                    minDistance = this.position.getDistance(hero);
-                    target = hero;
-                }
-            }
-            if(this.position.getDistance(target)>=2){
-                this.position.direction(target.position, friends);
-            }
-            else if(target.health > 0){
-                this.attack(target, this.minDamage, this.maxDamage);
-                this.stamina--;
-            }
-        }
     }
 
     public String getInfo() {

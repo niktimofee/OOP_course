@@ -48,40 +48,4 @@ public class Peasant extends BaseHero {
         coord.setX(coord.getX() + deltaX);
         coord.setY(coord.getY() + deltaY);
     }
-
-    public int getAttack() {
-        return attack;
-    }
-
-    public int getDefense() {
-        return defense;
-    }
-
-    public int getShots() {
-        return shots;
-    }
-
-    public int getDamage() {
-        return damage;
-    }
-
-    public int getHealth() {
-        return health;
-    }
-
-    public int getSpeed() {
-        return speed;
-    }
-
-    public int getDelivery() {
-        return delivery;
-    }
-
-    public int getMagic() {
-        return magic;
-    }
-
-    // public String getInfo() {
-    //     return heroType;
-    // }
 }

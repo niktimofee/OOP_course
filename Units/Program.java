@@ -15,7 +15,6 @@ public class Program {
     public static void scan(String[] args) {
         Scanner sc = new Scanner(System.in);
         main();
-
         while(true){
             ConsoleView.view();
             sc.nextLine();
@@ -24,14 +23,7 @@ public class Program {
     }
 
     public static void main(String[] args) {
-
-        // List<BaseHero> heroesList1 = new ArrayList<>();
-        // List<BaseHero> heroesList2 = new ArrayList<>();
-        // Random random = new Random();
-
         for (int i = 0; i < GANG_SIZE + 1; i++) {
-            // int heroType1 = random.nextInt(4);
-            // int heroType2 = random.nextInt(4) + 4;
             switch (new Random().nextInt(4)) {
                 case 0:
                     whiteSide.add(new Peasant("Крестьянин #" + i));
@@ -65,23 +57,12 @@ public class Program {
 
         public static void step() {
             List<BaseHero> allHeroes = new ArrayList<>();
-
             allHeroes.addAll(whiteSide);
             allHeroes.addAll(darkSide);
-
             Collections.sort(allHeroes, (h1, h2) -> h2.getSpeed() - h1.getSpeed());
-
             for (BaseHero hero : allHeroes) {
             System.out.println(hero.getInfo());
             }
-
-            // for (BaseHero hero : allHeroes) {
-            //     if (darkSide.contains(hero)) {
-            //         hero.step(whiteSide, darkSide);
-            //     } else
-            //         hero.step(darkSide, whiteSide);
-            // }
-
         }
 
         // Peasant peasant = new Peasant("Джек", 10, 20);

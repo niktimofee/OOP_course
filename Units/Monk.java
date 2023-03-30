@@ -1,6 +1,6 @@
 package Units;
 
-public class Monk extends BaseHero {
+public class Monk extends MagicClass {
 
     protected int magic;
 
@@ -22,12 +22,4 @@ public class Monk extends BaseHero {
     public int getMagic() {
         return magic;
     }
-
-    // public String getInfo() {
-    //     return heroType;
-    // }
-
-    // public void step() {
-    //     System.out.println(heroType + " ходит...");
-    // }
 }

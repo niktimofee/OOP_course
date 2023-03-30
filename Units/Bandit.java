@@ -1,6 +1,6 @@
 package Units;
 
-public class Bandit extends BaseHero {
+public class Bandit extends InfantClass {
 
     protected int shots;
     protected int minDamage;
@@ -35,12 +35,4 @@ public class Bandit extends BaseHero {
     public int getMaxDamage() {
         return maxDamage;
     }
-
-    // public String getInfo() {
-    //     return heroType;
-    // }
-
-    // public void step() {
-    //     System.out.println(heroType + " ходит...");
-    // }
 }

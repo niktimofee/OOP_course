@@ -1,6 +1,6 @@
 package Units;
 
-public class Crossbowman extends BaseHero {
+public class Crossbowman extends ShooterClass {
 
     protected int shots;
     protected int minDamage;
@@ -35,14 +35,6 @@ public class Crossbowman extends BaseHero {
     public int getMaxDamage() {
         return maxDamage;
     }
-
-    // public String getInfo() {
-    //     return heroType;
-    // }
-
-    // public void step() {
-    //     System.out.println(heroType + " ходит...");
-    // }
 
     public void step() {
         if (getHealth() == 0 || shots == 0) {

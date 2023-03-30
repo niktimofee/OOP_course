@@ -1,6 +1,6 @@
 package Units;
 
-public class Sniper extends BaseHero {
+public class Sniper extends ShooterClass {
 
     protected int shots;
     protected int minDamage;
